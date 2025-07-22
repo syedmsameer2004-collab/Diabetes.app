@@ -85,11 +85,7 @@ def get_status_icon(value, metric_type):
 def main():
     # Header
     st.markdown('<h1 class="main-header">Diabetes Risk Assessment</h1>', unsafe_allow_html=True)
-    st.markdown("""
-    <div style="text-align: center; color: #2c5aa0; font-size: 18px; margin-bottom: 2rem; font-weight: 500;">
-    This app predicts the risk of diabetes based on your health data.
-    </div>
-    """, unsafe_allow_html=True)
+    st.write("This app predicts the risk of diabetes based on your health data. Fill in the details below to get a prediction.")
 
     model = load_model()
     if model is None:
@@ -99,17 +95,19 @@ def main():
 
 def show_prediction_page(model):
     with st.form("prediction_form"):
+        st.subheader("Enter your health details:")
+
         col1, col2 = st.columns(2)
         with col1:
-            pregnancies = st.number_input("Number of Pregnancies", 0, 20, 1)
-            glucose = st.number_input("Glucose Level (mg/dL)", 0, 300, 120)
-            blood_pressure = st.number_input("Blood Pressure (mm Hg)", 0, 200, 80)
-            skin_thickness = st.number_input("Skin Thickness (mm)", 0, 100, 20)
+            pregnancies = st.number_input("Number of Pregnancies", min_value=0, max_value=20, value=1)
+            glucose = st.number_input("Glucose Level (mg/dL)", min_value=0, max_value=300, value=120)
+            blood_pressure = st.number_input("Blood Pressure (mm Hg)", min_value=0, max_value=200, value=80)
+            skin_thickness = st.number_input("Skin Thickness (mm)", min_value=0, max_value=100, value=20)
         with col2:
-            insulin = st.number_input("Insulin Level (mu U/ml)", 0, 900, 80)
-            bmi = st.number_input("BMI (Body Mass Index)", 0.0, 70.0, 25.0)
-            diabetes_pedigree = st.number_input("Diabetes Pedigree Function", 0.0, 3.0, 0.5, step=0.001)
-            age = st.number_input("Age (years)", 1, 120, 30)
+            insulin = st.number_input("Insulin Level (mu U/ml)", min_value=0, max_value=900, value=80)
+            bmi = st.number_input("BMI (Body Mass Index)", min_value=0.0, max_value=70.0, value=25.0)
+            diabetes_pedigree = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=0.5, step=0.001)
+            age = st.number_input("Age (years)", min_value=1, max_value=120, value=30)
 
         submitted = st.form_submit_button("Predict")
 
