@@ -148,22 +148,9 @@ h2, h3 {
 
 /* Section headings in forms - Dark Mode */
 .stMarkdown strong,
-.stMarkdown b,
-.stMarkdown p strong,
-.stMarkdown p b {
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Force all text in markdown to be visible */
-.stMarkdown p {
-    color: #e8e8e8 !important;
-}
-
-/* Force all text elements to be visible */
-p, span, div {
-    color: #e8e8e8 !important;
+.stMarkdown b {
+    color: #81d4fa !important;
+    font-weight: 600 !important;
 }
 
 /* Risk factors list styling - Dark Mode */
@@ -257,23 +244,23 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown("**Personal Information**")
+            st.markdown("**Patient Demographics & History**")
             # Only show pregnancies for females
             if gender == "Female":
-                pregnancies = st.number_input("Number of Pregnancies", min_value=0, max_value=20, value=0)
+                pregnancies = st.number_input("Number of Pregnancies (Total Live Births)", min_value=0, max_value=20, value=0)
             else:
                 pregnancies = 0  # Set to 0 for males and others
 
-            glucose = st.number_input("Blood Sugar Level", min_value=50, max_value=300, value=120)
-            blood_pressure = st.number_input("Blood Pressure", min_value=40, max_value=180, value=80)
-            skin_thickness = st.number_input("Skin Thickness", min_value=0, max_value=100, value=20)
+            glucose = st.number_input("Fasting Blood Glucose (mg/dL)", min_value=50, max_value=300, value=120)
+            blood_pressure = st.number_input("Blood Pressure (Diastolic) - mmHg", min_value=40, max_value=180, value=80)
+            skin_thickness = st.number_input("Triceps Skinfold Thickness (mm)", min_value=0, max_value=100, value=20)
 
         with col2:
-            st.markdown("**Health Measurements**")
-            insulin = st.number_input("Insulin Level", min_value=0, max_value=900, value=80)
-            bmi = st.number_input("Body Mass Index (BMI)", min_value=15.0, max_value=70.0, value=25.0, step=0.1)
-            diabetes_pedigree = st.number_input("Family History Score", min_value=0.0, max_value=3.0, value=0.5, step=0.01)
-            age = st.number_input("Age", min_value=18, max_value=120, value=30)
+            st.markdown("**Laboratory & Metabolic Measurements**")
+            insulin = st.number_input("2-Hour Serum Insulin (μU/mL)", min_value=0, max_value=900, value=80)
+            bmi = st.number_input("Body Mass Index - BMI (kg/m²)", min_value=15.0, max_value=70.0, value=25.0, step=0.1)
+            diabetes_pedigree = st.number_input("Diabetes Pedigree Function (Family History)", min_value=0.0, max_value=3.0, value=0.5, step=0.01)
+            age = st.number_input("Age in Years", min_value=18, max_value=120, value=30)
 
         submitted = st.form_submit_button("Calculate Risk", type="primary")
 
@@ -502,3 +489,11 @@ def main():
                     <strong>Category:</strong> {feedback_type}<br>
                     <strong>Priority:</strong> {priority_level}<br>
                     <strong>Name:</strong> {user_name if user_name else "Anonymous"}<br>
+                    <strong>Message:</strong> {feedback_message[:200]}{"..." if len(feedback_message) > 200 else ""}
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.warning("Please enter a message before submitting feedback.")
+
+if __name__ == "__main__":
+    main()
