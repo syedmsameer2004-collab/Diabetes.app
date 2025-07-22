@@ -12,7 +12,8 @@ st.markdown("""
 /* Global medical theme */
 .stApp {
     background: linear-gradient(135deg, #f8fafb 0%, #e8f4f8 100%);
-}
+    color: #2c3e50;
+}:
 
 /* Main header with calming medical blue */
 .main-header {
@@ -67,6 +68,7 @@ st.markdown("""
     margin: 1.5rem 0;
     border-left: 5px solid #1976d2;
     box-shadow: 0 3px 15px rgba(25, 118, 210, 0.1);
+    color: #2c3e50;
 }
 
 /* Medical metrics styling */
@@ -76,6 +78,7 @@ st.markdown("""
     border-radius: 8px;
     border: 1px solid #e1f5fe;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    color: #2c3e50;
 }
 
 /* Input field styling for medical forms */
@@ -132,6 +135,7 @@ h2, h3 {
     border-radius: 8px;
     border-left: 4px solid #ff9800;
     margin: 1rem 0;
+    color: #2c3e50;
 }
 
 /* Medical expander styling */
@@ -171,7 +175,7 @@ def main():
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
         <h1 class="main-header">Diabetes Risk Assessment System</h1>
-        <p style="color: #546e7a; font-size: 1.1rem; margin-top: -1rem;">
+        <p style="color: #34495e; font-size: 1.1rem; margin-top: -1rem; font-weight: 500;">
             Advanced Clinical Screening & Risk Stratification Tool
         </p>
     </div>
@@ -183,7 +187,7 @@ def main():
         <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
             <strong style="color: #1565c0;">Medical Disclaimer & Clinical Notice</strong>
         </div>
-        <p style="margin: 0; color: #37474f;">
+        <p style="margin: 0; color: #2c3e50; font-weight: 500;">
             This tool provides preliminary risk assessment for educational and screening purposes only. 
             Results should not replace professional medical consultation, diagnosis, or treatment decisions.
             Always consult qualified healthcare providers for medical advice.
@@ -202,7 +206,7 @@ def main():
         <h2 style="color: #1565c0;">
             Clinical Assessment Form
         </h2>
-        <p style="color: #546e7a; margin-top: -0.5rem;">
+        <p style="color: #34495e; margin-top: -0.5rem; font-weight: 500;">
             Please provide accurate health information for optimal risk assessment
         </p>
     </div>
@@ -400,7 +404,7 @@ def main():
         <h2 style="color: #1565c0;">
             Patient Feedback & Communication
         </h2>
-        <p style="color: #546e7a; margin-top: -0.5rem;">
+        <p style="color: #34495e; margin-top: -0.5rem; font-weight: 500;">
             Share your assessment experience or ask questions for healthcare providers
         </p>
     </div>
@@ -409,7 +413,7 @@ def main():
     with st.form("feedback_form"):
         st.markdown("""
         <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1976d2; margin-bottom: 1rem;">
-            <p style="margin: 0; color: #37474f;">
+            <p style="margin: 0; color: #2c3e50; font-weight: 500;">
                 Your feedback helps improve this assessment tool and can be shared with healthcare providers 
                 for better understanding of your health concerns and assessment experience.
             </p>
