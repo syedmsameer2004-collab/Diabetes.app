@@ -6,7 +6,7 @@ import pandas as pd
 # Basic Page configuration
 st.set_page_config(page_title="Diabetes Risk Assessment", layout="centered")
 
-# Medical styling and stuff over here
+# Medical styling and stuff over here.
 st.markdown("""
 <style>
 /* Global medical theme - Dark Mode */
