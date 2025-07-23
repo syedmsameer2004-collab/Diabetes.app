@@ -244,10 +244,10 @@ def main():
         with col1:
             st.markdown("**Patient Demographics & History**")
             
-            if gender == "Female":
+if gender == "Female":
     pregnancies = st.number_input("Number of Pregnancies (Total Live Births)", min_value=0, max_value=20, value=0)
 else:
-    pregnancies = 0  
+    pregnancies = 0
 
             glucose = st.number_input("Fasting Blood Glucose (mg/dL)", min_value=50, max_value=300, value=120)
             blood_pressure = st.number_input("Blood Pressure (Diastolic) - mmHg", min_value=40, max_value=180, value=80)
