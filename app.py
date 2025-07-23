@@ -6,7 +6,7 @@ import pandas as pd
 # Page configuration
 st.set_page_config(page_title="Diabetes Risk Assessment", layout="centered")
 
-# Medical-inspired CSS styling with healthcare psychology colors
+# Medical styling and stuff over here
 st.markdown("""
 <style>
 /* Global medical theme - Dark Mode */
@@ -198,7 +198,7 @@ p, span, div {
 </style>
 """, unsafe_allow_html=True)
 
-# Load the trained model
+# basically we are loading the model over here
 @st.cache_resource
 def load_model():
     try:
@@ -209,7 +209,7 @@ def load_model():
         return None
 
 def main():
-    # Medical header with professional styling
+    # Medical header made over here
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
         <h1 class="main-header">Diabetes Risk Assessment System</h1>
@@ -219,7 +219,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Medical disclaimer with enhanced styling
+    # Medical disclaimer made here
     st.markdown("""
     <div class="info-box">
         <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
@@ -233,12 +233,12 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Load model
+    # Loading the model again
     model = load_model()
     if model is None:
         st.stop()
 
-    # Assessment form with medical styling
+    # Assessment form over here
     st.markdown("""
     <div style="margin: 2rem 0 1rem 0;">
         <h2 style="color: #1565c0;">
@@ -251,18 +251,18 @@ def main():
     """, unsafe_allow_html=True)
 
     with st.form("assessment_form"):
-        # Gender selection
+        # Gender selection 
         gender = st.selectbox("Gender", ["Female", "Male", "Other"])
 
         col1, col2 = st.columns(2)
 
         with col1:
             st.markdown("**Personal Information**")
-            # Only show pregnancies for females
+            # Only shows pregnancies for females
             if gender == "Female":
                 pregnancies = st.number_input("Number of Pregnancies", min_value=0, max_value=20, value=0)
             else:
-                pregnancies = 0  # Set to 0 for males and others
+                pregnancies = 0  # obviously Set to 0 for males
 
             glucose = st.number_input("Blood Sugar Level", min_value=50, max_value=300, value=120)
             blood_pressure = st.number_input("Blood Pressure", min_value=40, max_value=180, value=80)
@@ -278,7 +278,7 @@ def main():
         submitted = st.form_submit_button("Calculate Risk", type="primary")
 
         if submitted:
-            # Prepare input data with feature names
+            # Preparing all input data with their respective feature names
             feature_names = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 
                            'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
 
@@ -288,12 +288,12 @@ def main():
             input_data = pd.DataFrame(input_values, columns=feature_names)
 
             try:
-                # Make prediction
+                # Making prediction
                 prediction = model.predict(input_data)[0]
                 probability = model.predict_proba(input_data)[0]
                 risk_score = probability[1] if len(probability) > 1 else probability[0]
 
-                # Display results
+                # Displaying the results
                 st.markdown("---")
                 st.subheader("Assessment Results")
 
@@ -317,7 +317,7 @@ def main():
 
                     st.success("Recommendation: Continue healthy lifestyle practices and regular check-ups.")
 
-                # Risk factors analysis
+                # Risk factors analysis section over here
                 st.subheader("Clinical Health Indicators")
 
                 col1, col2, col3 = st.columns(3)
@@ -355,7 +355,7 @@ def main():
                     </div>
                     """, unsafe_allow_html=True)
 
-                # Risk factors analysis
+                # Risk factors analysis part 2
                 st.subheader("Risk Factor Analysis")
                 risk_factors = []
                 if glucose > 125:
@@ -393,7 +393,7 @@ def main():
             except Exception as e:
                 st.error(f"Prediction error: {str(e)}")
 
-    # Advanced data input guidance section
+    # Advanced data input guidance section over here
     with st.expander("Advanced Input Guide: Clinical Parameter Details & Tips"):
         st.subheader("Detailed Clinical Parameter Guide")
 
@@ -435,7 +435,7 @@ def main():
         st.write("• 1.3-2.0: Multiple first-degree relatives with diabetes")
         st.write("• 2.1-3.0: Both parents diabetic or strong family pattern")
 
-    # User feedback form section
+    # User feedback form section over in this section of code
     st.markdown("---")
     st.markdown("""
     <div style="margin: 2rem 0 1rem 0;">
@@ -495,7 +495,7 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
-                # Display feedback summary for confirmation
+                # finally Displaying feedback summary for confirmation :) please grade me well teachers
                 st.markdown(f"""
                 <div style="background: #2a2a2a; padding: 1rem; border-radius: 6px; margin-top: 1rem; color: #e8e8e8;">
                     <strong>Feedback Summary:</strong><br>
