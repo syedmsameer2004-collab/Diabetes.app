@@ -10,7 +10,7 @@ def generate_synthetic_data(n_samples=1000):
     """Generate synthetic diabetes dataset for training"""
     np.random.seed(42)
 
-    # Generate features
+    
     pregnancies = np.random.poisson(2, n_samples)
     glucose = np.random.normal(120, 30, n_samples)
     blood_pressure = np.random.normal(80, 15, n_samples)
@@ -20,7 +20,7 @@ def generate_synthetic_data(n_samples=1000):
     diabetes_pedigree = np.random.gamma(0.5, 1, n_samples)
     age = np.random.normal(35, 15, n_samples)
 
-    # Ensure realistic ranges
+    
     pregnancies = np.clip(pregnancies, 0, 17)
     glucose = np.clip(glucose, 50, 300)
     blood_pressure = np.clip(blood_pressure, 40, 180)
@@ -30,7 +30,7 @@ def generate_synthetic_data(n_samples=1000):
     diabetes_pedigree = np.clip(diabetes_pedigree, 0, 3)
     age = np.clip(age, 18, 120)
 
-    # Create target variable with realistic correlations
+    
     diabetes_risk = (
         0.1 * (glucose > 125) +
         0.08 * (bmi > 30) +
@@ -43,7 +43,7 @@ def generate_synthetic_data(n_samples=1000):
 
     outcome = (diabetes_risk > 0.3).astype(int)
 
-    # Create DataFrame
+    
     data = pd.DataFrame({
         'Pregnancies': pregnancies,
         'Glucose': glucose,
@@ -61,19 +61,19 @@ def generate_synthetic_data(n_samples=1000):
 def train_and_save_model():
     """Train the diabetes prediction model and save it"""
 
-    # Generate synthetic data
+    
     data = generate_synthetic_data(1000)
 
-    # Prepare features and target
+    
     X = data.drop('Outcome', axis=1)
     y = data['Outcome']
 
-    # Split the data
+    
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    # Train Random Forest model
+    
     model = RandomForestClassifier(
         n_estimators=100,
         random_state=42,
@@ -84,7 +84,7 @@ def train_and_save_model():
 
     model.fit(X_train, y_train)
 
-    # Evaluate model
+    
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
 
@@ -92,7 +92,7 @@ def train_and_save_model():
     print("\nClassification Report:")
     print(classification_report(y_test, y_pred))
 
-    # Save the model
+    
     joblib.dump(model, 'diabetes_model.pkl')
     print("\nModel saved as 'diabetes_model.pkl'")
 
