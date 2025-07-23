@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
-# Page configuration
+# Basic Page configuration
 st.set_page_config(page_title="Diabetes Risk Assessment", layout="centered")
 
 # Medical styling and stuff over here
@@ -198,7 +198,7 @@ p, span, div {
 </style>
 """, unsafe_allow_html=True)
 
-# basically we are loading the model over here
+# loading the model over here
 @st.cache_resource
 def load_model():
     try:
@@ -219,7 +219,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Medical disclaimer made here
+    # Medical disclaimer Made
     st.markdown("""
     <div class="info-box">
         <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
@@ -233,12 +233,12 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Loading the model again
+    # Loading model again
     model = load_model()
     if model is None:
         st.stop()
 
-    # Assessment form over here
+    # Assessment form 
     st.markdown("""
     <div style="margin: 2rem 0 1rem 0;">
         <h2 style="color: #1565c0;">
@@ -355,7 +355,7 @@ def main():
                     </div>
                     """, unsafe_allow_html=True)
 
-                # Risk factors analysis part 2
+                # Risk factors analysis 
                 st.subheader("Risk Factor Analysis")
                 risk_factors = []
                 if glucose > 125:
@@ -393,7 +393,7 @@ def main():
             except Exception as e:
                 st.error(f"Prediction error: {str(e)}")
 
-    # Advanced data input guidance section over here
+    # Advanced data input guidance section 
     with st.expander("Advanced Input Guide: Clinical Parameter Details & Tips"):
         st.subheader("Detailed Clinical Parameter Guide")
 
@@ -435,7 +435,7 @@ def main():
         st.write("• 1.3-2.0: Multiple first-degree relatives with diabetes")
         st.write("• 2.1-3.0: Both parents diabetic or strong family pattern")
 
-    # User feedback form section over in this section of code
+    # User feedback form section 
     st.markdown("---")
     st.markdown("""
     <div style="margin: 2rem 0 1rem 0;">
