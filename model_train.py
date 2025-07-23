@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, classification_report
 import joblib
 
 def generate_synthetic_data(n_samples=1000):
-    """Generate synthetic diabetes dataset for training"""
+    """Generates synthetic diabetes dataset for training purposes"""
     np.random.seed(42)
 
     
@@ -59,7 +59,7 @@ def generate_synthetic_data(n_samples=1000):
     return data
 
 def train_and_save_model():
-    """Train the diabetes prediction model and save it"""
+    """Trains the diabetes prediction model and saves it"""
 
     
     data = generate_synthetic_data(1000)
